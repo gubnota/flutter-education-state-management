@@ -20,6 +20,12 @@ sealed class ShapeState with _$ShapeState {
         _ => false,
       };
 
+  Color? get color => switch (this) {
+        CircleShapeState(:final color) => color,
+        SquareShapeState(:final color) => color,
+        _ => null
+      };
+
   bool get isCircle => switch (this) {
         CircleShapeState() => true,
         _ => false,

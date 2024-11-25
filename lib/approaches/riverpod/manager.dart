@@ -14,23 +14,15 @@ class ShapeRiverpodProvider extends StateNotifier<ShapeState> {
   }
 
   void makeCircle() {
-    if (state.isEmpty) {
-      state = ShapeState.circle(
-        color: ColorUtils.makeRandomColor(),
-      );
-    } else {
-      throw Exception('Cannot makeCircle from state $state');
-    }
+    state = ShapeState.circle(
+      color: state.color ?? ColorUtils.makeRandomColor(),
+    );
   }
 
   void makeSquare() {
-    if (state.isEmpty) {
-      state = ShapeState.square(
-        color: ColorUtils.makeRandomColor(),
-      );
-    } else {
-      throw Exception('Cannot makeSquare from state $state');
-    }
+    state = ShapeState.square(
+      color: state.color ?? ColorUtils.makeRandomColor(),
+    );
   }
 
   void changeColor() {
@@ -41,13 +33,10 @@ class ShapeRiverpodProvider extends StateNotifier<ShapeState> {
       state = ShapeState.circle(
         color: ColorUtils.makeRandomColor(),
       );
-      return;
-    }
-    if (state.isSquare) {
+    } else if (state.isSquare) {
       state = ShapeState.square(
         color: ColorUtils.makeRandomColor(),
       );
-      return;
     }
   }
 }

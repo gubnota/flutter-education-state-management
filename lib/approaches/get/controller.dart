@@ -14,23 +14,15 @@ class GetxShapeController extends GetxController {
   }
 
   void makeCircle() {
-    if (state.value.isEmpty) {
-      state.value = ShapeState.circle(
-        color: ColorUtils.makeRandomColor(),
-      );
-    } else {
-      throw Exception('Cannot makeCircle from state $state');
-    }
+    state.value = ShapeState.circle(
+      color: state.value.color ?? ColorUtils.makeRandomColor(),
+    );
   }
 
   void makeSquare() {
-    if (state.value.isEmpty) {
-      state.value = ShapeState.square(
-        color: ColorUtils.makeRandomColor(),
-      );
-    } else {
-      throw Exception('Cannot makeSquare from state $state');
-    }
+    state.value = ShapeState.square(
+      color: state.value.color ?? ColorUtils.makeRandomColor(),
+    );
   }
 
   void changeColor() {

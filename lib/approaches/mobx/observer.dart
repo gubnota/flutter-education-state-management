@@ -21,24 +21,16 @@ abstract class MobxShapeChangerBase with Store {
 
   @action
   void makeCircle() {
-    if (value.isEmpty) {
-      value = ShapeState.circle(
-        color: ColorUtils.makeRandomColor(),
-      );
-    } else {
-      throw Exception('Cannot makeCircle from state $value');
-    }
+    value = ShapeState.circle(
+      color: ColorUtils.makeRandomColor(),
+    );
   }
 
   @action
   void makeSquare() {
-    if (value.isEmpty) {
-      value = ShapeState.square(
-        color: ColorUtils.makeRandomColor(),
-      );
-    } else {
-      throw Exception('Cannot makeSquare from state $value');
-    }
+    value = ShapeState.square(
+      color: ColorUtils.makeRandomColor(),
+    );
   }
 
   @action
@@ -50,13 +42,10 @@ abstract class MobxShapeChangerBase with Store {
       value = ShapeState.circle(
         color: ColorUtils.makeRandomColor(),
       );
-      return;
-    }
-    if (value.isSquare) {
+    } else if (value.isSquare) {
       value = ShapeState.square(
         color: ColorUtils.makeRandomColor(),
       );
-      return;
     }
   }
 }

@@ -19,23 +19,15 @@ class ElementaryShapeModel extends ElementaryModel {
   }
 
   void makeCircle() {
-    if (_shape.isEmpty) {
-      _shape = ShapeState.circle(
-        color: ColorUtils.makeRandomColor(),
-      );
-    } else {
-      handleError(Exception('Cannot makeCircle from state $_shape'));
-    }
+    _shape = ShapeState.circle(
+      color: ColorUtils.makeRandomColor(),
+    );
   }
 
   void makeSquare() {
-    if (_shape.isEmpty) {
-      _shape = ShapeState.square(
-        color: ColorUtils.makeRandomColor(),
-      );
-    } else {
-      handleError(Exception('Cannot makeSquare from state $_shape'));
-    }
+    _shape = ShapeState.square(
+      color: ColorUtils.makeRandomColor(),
+    );
   }
 
   void changeColor() {

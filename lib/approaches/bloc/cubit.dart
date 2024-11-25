@@ -17,29 +17,19 @@ class ShapeCubit extends Cubit<ShapeState> {
   }
 
   void makeCircle() {
-    if (state.isEmpty) {
-      emit(
-        ShapeState.circle(
-          color: ColorUtils.makeRandomColor(),
-        ),
-      );
-    } else {
-      addError(Exception('Cannot makeCircle from state $state'));
-      return;
-    }
+    emit(
+      ShapeState.circle(
+        color: state.color ?? ColorUtils.makeRandomColor(),
+      ),
+    );
   }
 
   void makeSquare() {
-    if (state.isEmpty) {
-      emit(
-        ShapeState.square(
-          color: ColorUtils.makeRandomColor(),
-        ),
-      );
-    } else {
-      addError(Exception('Cannot makeSquare from state $state'));
-      return;
-    }
+    emit(
+      ShapeState.square(
+        color: state.color ?? ColorUtils.makeRandomColor(),
+      ),
+    );
   }
 
   void changeColor() {

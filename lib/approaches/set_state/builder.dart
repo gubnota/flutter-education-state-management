@@ -24,48 +24,34 @@ class _FlutterSetStateScreenState extends State<FlutterSetStateScreen> {
   }
 
   void makeCircle() {
-    if (state.isEmpty) {
-      setState(() {
-        state = ShapeState.circle(
-          color: ColorUtils.makeRandomColor(),
-        );
-      });
-    } else {
-      throw Exception('Cannot makeCircle from state $state');
-    }
+    setState(() {
+      state = ShapeState.circle(
+        color: state.color ?? ColorUtils.makeRandomColor(),
+      );
+    });
   }
 
   void makeSquare() {
-    if (state.isEmpty) {
-      setState(() {
-        state = ShapeState.square(
-          color: ColorUtils.makeRandomColor(),
-        );
-      });
-    } else {
-      throw Exception('Cannot makeSquare from state $state');
-    }
+    setState(() {
+      state = ShapeState.square(
+        color: state.color ?? ColorUtils.makeRandomColor(),
+      );
+    });
   }
 
   void changeColor() {
-    if (state.isEmpty) {
-      throw Exception('Cannot changeColor from state $state');
-    }
     if (state.isCircle) {
       setState(() {
         state = ShapeState.circle(
           color: ColorUtils.makeRandomColor(),
         );
       });
-      return;
-    }
-    if (state.isSquare) {
+    } else if (state.isSquare) {
       setState(() {
         state = ShapeState.square(
           color: ColorUtils.makeRandomColor(),
         );
       });
-      return;
     }
   }
 

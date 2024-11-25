@@ -21,25 +21,21 @@ ShapeState reset(ShapeState state) {
 }
 
 ShapeState makeCircle(ShapeState state) {
-  if (state.isEmpty) {
-    final newState = ShapeState.circle(
-      color: ColorUtils.makeRandomColor(),
-    );
-    return newState;
-  } else {
-    throw Exception('Cannot makeCircle from state $state');
-  }
+  // if (state.isEmpty) {
+  final newState = ShapeState.circle(
+    color: ColorUtils.makeRandomColor(),
+  );
+  return newState;
+  // } else {
+  //   throw Exception('Cannot makeCircle from state $state');
+  // }
 }
 
 ShapeState makeSquare(ShapeState state) {
-  if (state.isEmpty) {
-    final newState = ShapeState.square(
-      color: ColorUtils.makeRandomColor(),
-    );
-    return newState;
-  } else {
-    throw Exception('Cannot makeSquare from state $state');
-  }
+  final newState = ShapeState.square(
+    color: ColorUtils.makeRandomColor(),
+  );
+  return newState;
 }
 
 ShapeState changeColor(ShapeState state) {

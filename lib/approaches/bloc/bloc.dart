@@ -37,32 +37,22 @@ class ShapeBloc extends Bloc<ShapeEvent, ShapeState> {
     ShapeEvent event,
     Emitter<ShapeState> emit,
   ) {
-    if (state.isEmpty) {
-      emit(
-        ShapeState.circle(
-          color: ColorUtils.makeRandomColor(),
-        ),
-      );
-    } else {
-      addError(Exception('Cannot makeCircle from state $state'));
-      return;
-    }
+    emit(
+      ShapeState.circle(
+        color: state.color ?? ColorUtils.makeRandomColor(),
+      ),
+    );
   }
 
   void _handleSquareEvent(
     ShapeEvent event,
     Emitter<ShapeState> emit,
   ) {
-    if (state.isEmpty) {
-      emit(
-        ShapeState.square(
-          color: ColorUtils.makeRandomColor(),
-        ),
-      );
-    } else {
-      addError(Exception('Cannot makeSquare from state $state'));
-      return;
-    }
+    emit(
+      ShapeState.square(
+        color: state.color ?? ColorUtils.makeRandomColor(),
+      ),
+    );
   }
 
   void _handleChangeColorEvent(
@@ -79,15 +69,12 @@ class ShapeBloc extends Bloc<ShapeEvent, ShapeState> {
           color: ColorUtils.makeRandomColor(),
         ),
       );
-      return;
-    }
-    if (state.isSquare) {
+    } else if (state.isSquare) {
       emit(
         ShapeState.square(
           color: ColorUtils.makeRandomColor(),
         ),
       );
-      return;
     }
   }
 

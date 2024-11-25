@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -6,6 +9,7 @@ import 'approaches/bloc/bloc_builder.dart';
 import 'approaches/bloc/cubit_builder.dart';
 import 'approaches/elementary/widget.dart';
 import 'approaches/get/builder.dart';
+import 'approaches/inherited/builder.dart'; // Imported
 import 'approaches/mobx/builder.dart';
 import 'approaches/provider/builder.dart';
 import 'approaches/redux/view.dart';
@@ -14,8 +18,11 @@ import 'approaches/set_state/builder.dart';
 
 void main() {
   runApp(
-    const ProviderScope(
-      child: _App(),
+    DevicePreview(
+      enabled: !Platform.isIOS & !Platform.isAndroid,
+      builder: (context) => const ProviderScope(
+        child: _App(),
+      ),
     ),
   );
 }
@@ -33,6 +40,7 @@ class _App extends StatelessWidget {
 
     return MaterialApp(
       theme: theme,
+      debugShowCheckedModeBanner: false,
       home: const HomeScreen(),
     );
   }
@@ -94,6 +102,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Approaches.getx => const GetxScreen(),
                     Approaches.mobx => const MobxScreen(),
                     Approaches.redux => const ReduxScreen(),
+                    Approaches.inherited => const InheritedScreen(),
                   };
                 },
                 itemCount: Approaches.values.length,

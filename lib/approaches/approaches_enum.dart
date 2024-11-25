@@ -8,4 +8,5 @@ enum Approaches {
   getx,
   mobx,
   redux,
+  inherited,
 }
